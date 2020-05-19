@@ -1,0 +1,33 @@
+CREATE SCHEMA `examination`  DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+use examination;
+CREATE TABLE `examination`.`user_table` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` NVARCHAR(45) NOT NULL,
+  `username` NVARCHAR(45) NOT NULL,
+  `password` NVARCHAR(45) NOT NULL,
+  `rank_id` INT NOT NULL,
+  `rank_name` NVARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE `examination`.`questions` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` NVARCHAR(200) NULL,
+  `paper` LONGTEXT NULL,
+  `answer` NVARCHAR(2000) NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `examination`.`scantron` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `student_id` INT NULL,
+  `question_id` INT NULL,
+  `paper` LONGTEXT NULL,
+  `reply` NVARCHAR(2000) NULL,
+  `correct` NVARCHAR(2000) NULL,
+  `score` NVARCHAR(2000) NULL,
+  `sumscore` INT NULL,
+  PRIMARY KEY (`id`));
+
+
+INSERT INTO `examination`.`user_table`(`name`,`username`,`password`,`rank_id`,`rank_name`) VALUES('小张','xiaozhang','123456',0,'管理员');
